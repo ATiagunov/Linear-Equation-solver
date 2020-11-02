@@ -1,0 +1,12 @@
+words = list(map(str.lower, input(). split()))
+first = []
+second = []
+first.extend(words[0])
+second.extend(words[1])
+list = []
+for i in range(len(first)):
+    for j in range(len(second)):
+        if first[i] == second[j] and not first[i] in list:
+            list.append(first[i])
+list.sort()
+print(*list)
