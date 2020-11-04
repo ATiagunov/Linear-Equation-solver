@@ -1,3 +1,4 @@
+#Решение циклами
 A = list(map(str, input()))
 A.sort()
 len = len(A)
@@ -11,3 +12,15 @@ while len != 0:
         if A[j] == A[i]:
             A.remove(A[i])
             len -= 1
+
+
+№Решение с Counter и OrderedDict
+from collections import Counter, OrderedDict
+l = list(map(str, input()))
+l.sort()
+c = Counter(l)
+odict = OrderedDict(c)
+for key in odict:
+    value = odict[key]
+    print(key, '=', value)
+
