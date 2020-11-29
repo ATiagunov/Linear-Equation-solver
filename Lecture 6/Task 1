@@ -5,12 +5,12 @@ def Line(x):
     return 2*x
 
 def Extremum(a, b, *, func, **kargs):
-    for x in range(a, b+1):
+    for x in range(a, b + 1):
         if func(x) == func(-x):
             if a <= 0 <= b:
                 return 'Глобальный экстремум равен 0'
             return 'На заданном интервале экстремум не найден'
-        return f'Локальные экстремумы для линии равны {a}, {b}'
+        return f'Локальные экстремумы линии равны {a}, {b}'
 
 
 result = Extremum(-2, 2, func=Parabola)
