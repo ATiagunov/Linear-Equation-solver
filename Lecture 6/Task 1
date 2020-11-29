@@ -1,0 +1,14 @@
+import re
+
+with open('task.txt', 'r') as f:
+    symbols = re.findall(r'.', f. read())
+
+i = 0
+while i <= len(symbols):
+    if symbols[i] == '0':
+        break
+    elif symbols[i].isdigit():
+        i += int(symbols[i])
+    else:
+        print(symbols[i], end='')
+        i += 1
