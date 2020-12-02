@@ -1,0 +1,14 @@
+from itertools import product
+
+def prob(dice, pips, target):
+    rolls = product(range(1, pips+1), repeat=dice)
+    targets = sum(1 for roll in rolls if sum(roll) == target)
+    return targets / pips**dice
+
+
+usr = str(input())
+num_cubes = int(usr[:usr.index('d')])
+num_sides = int(usr[usr.index('d')+1:])
+
+for i in range(num_cubes, num_cubes * num_sides+1):
+    print(f'{i} = {prob(num_cubes, num_sides, i)*100:.2f} %')
