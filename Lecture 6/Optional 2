@@ -1,0 +1,17 @@
+from itertools import product
+
+def prob(dice, pips, target):
+    rolls = product(range(1, pips + 1), repeat=dice)
+    targets = sum(1 for roll in rolls if sum(roll) == target)
+    return targets / pips ** dice
+
+
+usr = list(map(str, input(). split()))
+num_dice = 0
+num_pips = 0
+for i in usr:
+    num_dice += int(i[:i.index('d')])
+    num_pips += int(i[i.index('d') + 1:])
+
+for i in range(num_dice, num_dice * num_pips + 1):
+    print(f'{i} = {prob(num_dice, num_pips, i) * 100:.2f} %')
