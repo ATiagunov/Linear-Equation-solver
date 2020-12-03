@@ -1,5 +1,6 @@
 from itertools import product
 
+
 def prob(dice, pips, target):
     rolls = product(range(1, pips + 1), repeat=dice)
     targets = sum(1 for roll in rolls if sum(roll) == target)
