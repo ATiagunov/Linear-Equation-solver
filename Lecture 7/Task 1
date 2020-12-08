@@ -1,0 +1,5 @@
+def Unique(iterable):
+    iterable.sort()
+    return((iterable[i]) for i in range(len(iterable)) if i == 0 or iterable[i] != iterable[i-1])
+
+print(*Unique(list(input().split())))
