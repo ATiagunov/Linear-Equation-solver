@@ -1,0 +1,8 @@
+def Template(template, values):
+    values = str(*values.values())
+    return template.replace('{username}', values)
+
+
+template = "Hello, {username}"
+
+print(Template(template, {"username": "John"}))
