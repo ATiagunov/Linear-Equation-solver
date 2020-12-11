@@ -1,6 +1,7 @@
 def Template(template, values):
     values = str(*values.values())
     return template.replace('{username}', values)
+    //return template.format(**values) лучше
 
 
 template = "Hello, {username}"
