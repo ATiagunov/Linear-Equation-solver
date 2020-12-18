@@ -1,4 +1,4 @@
-class Vehicle():
+class Vehicle:
     def __init__(self, max_speed, mileage, capacity, name):
         self.max_speed = max_speed
         self.mileage = mileage
