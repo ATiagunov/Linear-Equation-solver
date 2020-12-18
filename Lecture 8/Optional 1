@@ -6,8 +6,6 @@ class FileTracer:
         self._path = path
         files = os.listdir(path)
 
-
-
     def set_path(self, path: str) -> None:
         self._path = path
         self._is_scanned = False
