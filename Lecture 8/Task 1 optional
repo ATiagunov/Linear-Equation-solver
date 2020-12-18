@@ -1,0 +1,35 @@
+import os
+import json
+
+class FileTracer:
+    def __init__(self, path: str):
+        self._path = path
+        files = os.listdir(path)
+
+
+
+    def set_path(self, path: str) -> None:
+        self._path = path
+        self._is_scanned = False
+
+    def scan(self) -> list:
+        pass
+
+    def save(self, path: str):
+        self._path = path
+        f = []
+        files = os.listdir(path)
+        for i in files:
+            f.append(i)
+        index = []
+        for i in range(len(files)):
+            index.append(i)
+        data = dict(zip(index, f))
+        with open('data.json', 'w') as jsonfile:
+            json.dump(data, jsonfile)
+
+    def load(filepath: str) -> None:
+        pass
+
+    def diff(other) -> list:
+        pass
