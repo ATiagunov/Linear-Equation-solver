@@ -1,0 +1,51 @@
+import numpy as np
+n, m = map(int, input('Введите через пробел количество уравнений n(n≥1) и количество неизвестных m(m≥1): ').split())
+matrix = []
+j = 1
+i = 0
+while i < n:
+    a = input(f'Введите через пробел коэффициенты {j}-го уравнения системы и коэффициент b{j}, нажмите Enter: ').split()
+    if len(a) != m+1:
+        print('Ошибка ввода')
+    else:
+        matrix.append(a)
+        j += 1
+        i += 1
+a = []
+b = []
+for i in matrix:
+    a.append(i[:-1])
+    b.append(i[-1])
+print()
+A = np.matrix(a, dtype='float')
+AB = np.matrix(matrix, dtype='float')
+if np.linalg.matrix_rank(AB) != np.linalg.matrix_rank(A):
+    print('Решение не существует')
+elif np.linalg.matrix_rank(AB) < m:
+    print('Решений существует бесконечно много')
+else:
+    a = np.array(a, float)
+    b = np.array(b, float)
+    x = np.zeros(n, float)
+
+    for k in range(n-1):
+        for i in range(k+1, n):
+            if a[i, k] == 0:
+                continue
+            factor = a[k, k]/a[i, k]
+            for j in range(k, n):
+                a[i, j] = a[k, j] - a[i, j] * factor
+            b[i] = b[k] - b[i] * factor
+
+    x[n - 1] = b[n - 1] / a[n - 1, n - 1]
+    for i in range(n-2, -1, -1):
+        sum_ax = 0
+        for j in range(i+1, n):
+            sum_ax += a[i, j] * x[j]
+        x[i] = (b[i] - sum_ax) / a[i, i]
+
+    print('Решение существует и единственно:')
+    j = 1
+    for i in x:
+        print(f'x{j} = {i}')
+        j += 1
